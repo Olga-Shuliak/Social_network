@@ -1,0 +1,14 @@
+.nav {
+    grid-area: n;
+    background-color: aqua;
+}
+.item {
+    margin-top: 20px;
+}
+.item:hover > a {
+    color: goldenrod;
+}
+.item a {
+    color: dimgray;
+    text-decoration: none;
+}
