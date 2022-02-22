@@ -12,3 +12,6 @@
     color: dimgray;
     text-decoration: none;
 }
+.active > a {
+    color: white;
+}

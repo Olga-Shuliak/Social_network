@@ -1,4 +1,5 @@
 import classes from './Profile.module.css';
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
   return (
@@ -11,13 +12,7 @@ const Profile = () => {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKaiKiPcLJj7ufrj6M2KaPwyCT4lDSFA5oog&usqp=CAU"
               alt="avatar"/>
           <div>description</div>
-          <div>
-            <div>new post</div>
-            <div>old posts
-              <div>post 1</div>
-              <div>post 2</div>
-            </div>
-          </div>
+          <MyPosts />
         </div>
       </div>
   )
