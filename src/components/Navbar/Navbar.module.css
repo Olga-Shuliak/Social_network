@@ -4,14 +4,16 @@
 }
 .item {
     margin-top: 20px;
+    padding-left: 20px;
 }
 .item:hover > a {
     color: goldenrod;
 }
-.item a {
+a {
     color: dimgray;
     text-decoration: none;
 }
-.active > a {
-    color: white;
+.active {
+    color: red;
 }
+
