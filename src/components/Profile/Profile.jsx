@@ -3,16 +3,17 @@ import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
   return (
-      <div className={classes.content}>
+      <div>
         <div><img className={classes.cover}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWpNZM3apiTm01J_Ih8XYkRhvIOBr2kKhj1w&usqp=CAU"
-            alt="fon"/></div>
+                  src="https://images.wallpaperscraft.ru/image/single/fon_temnyy_pyatna_linii_51861_300x168.jpg"
+                  alt="fon"/>
+        </div>
         <div>
           <img className={classes.avatar}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKaiKiPcLJj7ufrj6M2KaPwyCT4lDSFA5oog&usqp=CAU"
-              alt="avatar"/>
+               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKaiKiPcLJj7ufrj6M2KaPwyCT4lDSFA5oog&usqp=CAU"
+               alt="avatar"/>
           <div>description</div>
-          <MyPosts />
+          <MyPosts/>
         </div>
       </div>
   )
