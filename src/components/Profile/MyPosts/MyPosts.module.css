@@ -1,4 +1,6 @@
-
+.myPost {
+    padding: 10px;
+}
 .posts {
     border: 1px solid dimgray;
 }

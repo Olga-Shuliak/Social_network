@@ -1,1 +1,30 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+}
 
+
+.dialogs {
+    padding: 10px;
+    border-right: 1px solid dimgray;
+}
+
+.dialogsItem {
+    padding: 10px;
+}
+.dialogsItem:hover > a {
+    color: goldenrod;
+}
+.active {
+    color: red;
+}
+
+
+
+.messages {
+    padding: 10px;
+}
+
+.messageItem {
+    padding: 10px;
+}
