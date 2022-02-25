@@ -11,4 +11,6 @@
     display: table-cell;
     vertical-align: center;
 }
-
+.likesBox {
+    padding: 5px 10px;
+}
