@@ -35,26 +35,28 @@ export const Messages = (props) => {
     {id: 1, message: 'Hi'},
     {id: 2, message: 'How are you?'},
     {id: 3, message: 'What about tomorrow?'},
-    {id: 4, message: 'Yo'}
+    {id: 4, message: 'Yo'},
+    {id: 5, message: 'Yo'},
+    {id: 6, message: 'Yo'}
   ];
+
+  let dialogsBlock = dialogsData
+      .map((el) => <DialogItem name={el.name} id={el.id}/>);
+
+  let messagesBlock = messagesData
+      .map(el => <MessageItem phrase={el.message}/>);
+
+
 
   return (
       <div className={classes.wrapper}>
 
         <div className={classes.dialogs}>
-          <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-          <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-          <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
-          <DialogItem name={dialogsData[3].name} id={dialogsData[3].id}/>
-          <DialogItem name={dialogsData[4].name} id={dialogsData[4].id}/>
-          <DialogItem name={dialogsData[5].name} id={dialogsData[5].id}/>
+          { dialogsBlock }
         </div>
 
         <div className={classes.messages}>
-          <MessageItem phrase={messagesData[0].message}/>
-          <MessageItem phrase={messagesData[1].message}/>
-          <MessageItem phrase={messagesData[2].message}/>
-          <MessageItem phrase={messagesData[3].message}/>
+          { messagesBlock }
         </div>
 
       </div>
