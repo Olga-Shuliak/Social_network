@@ -9,8 +9,7 @@ const MyPosts = () => {
     {id: 4, message: 'yo bro', likeCount: 7}
   ]
 
-  let postsBlock = postsData
-      .map(el => <Post message={el.message} likeCounter={el.likeCount}/>);
+  let postsBlock = postsData.map(el => <Post message={el.message} likeCounter={el.likeCount}/>);
 
   return (
       <div className={classes.myPost}>
