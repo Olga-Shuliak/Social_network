@@ -9,8 +9,11 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
 
+// import {PostsDataType} from './index';
 
-function App() {
+
+
+function App(props: any) {
   return (
       <div className="app-wrapper">
         <Header/>
@@ -18,8 +21,8 @@ function App() {
 
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/messages/*" element={<Messages/>}/>
+            <Route path="/profile" element={<Profile postsData={props.postsData}/>}/>
+            <Route path="/messages/*" element={<Messages  dialogsData={props.dialogsData} messagesData={props.messagesData}/>}/>
             {/*<Route path="/messages/:id" element={<MessageItem/>}/>*/}
             <Route path="/news" element={<News/>}/>
             <Route path="/music" element={<Music/>}/>
