@@ -11,8 +11,10 @@ const MyPosts = (props) => {
   let newPostElement = useRef(null);
 
   let addNewPost = () => {
+
     let text = newPostElement.current.value;
-    alert(text);
+    props.addNewPost(text);
+    newPostElement.current.value = '';
   }
 
   return (

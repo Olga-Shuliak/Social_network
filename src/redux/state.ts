@@ -1,10 +1,12 @@
+import {renderEntireTree} from '../render';
+
 let state = {
   profilePage: {
     postsData: [
-      {id: 1, message: 'Hi how are you?', likeCount: 10},
-      {id: 2, message: 'hello bro', likeCount: 5},
-      {id: 3, message: 'alloha', likeCount: 1},
-      {id: 4, message: 'yo bro', likeCount: 7}
+      {id: 1, message: 'feel good', likeCount: 10},
+      {id: 2, message: 'win!!!', likeCount: 5},
+      {id: 3, message: 'aloha', likeCount: 1},
+      {id: 4, message: 'all serious', likeCount: 7}
     ]
   },
   messagesPage: {
@@ -26,6 +28,24 @@ let state = {
     ]
   }
 }
+
+
+export type RootStateType = typeof state
+
+
+
+export let addNewPost = (newPostMessage: string): void => {
+
+  let newPost = {
+    id: 5,
+    message: newPostMessage,
+    likeCount: 0
+  };
+
+  state.profilePage.postsData.push(newPost);
+  renderEntireTree(state);
+}
+
 
 export default state;
 

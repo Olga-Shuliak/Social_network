@@ -1,16 +1,24 @@
 .post {
+    margin-top: 10px;
+    width: 60%;
     display: flex;
 }
+
 .post > img {
     width: 50px;
     height: 50px;
     border-radius: 50px;
 }
+
 .text {
-    border: 1px solid dimgray;
-    display: table-cell;
-    vertical-align: center;
+    width: 100%;
+    display: block;
+    padding: 5px;
+    border: 1px solid seagreen;
+    border-radius: 10px;
 }
+
 .likesBox {
+    margin-left: 40px;
     padding: 5px 10px;
 }
