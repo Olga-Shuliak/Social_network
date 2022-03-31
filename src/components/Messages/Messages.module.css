@@ -28,3 +28,11 @@
 .messageItem {
     padding: 10px;
 }
+
+.addMessageBlock {
+    margin: 10px;
+}
+
+.addMessageBlock > button {
+    display: block;
+}

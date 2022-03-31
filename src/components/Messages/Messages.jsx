@@ -1,8 +1,7 @@
 import classes from './Messages.module.css'
 import DialogItem from './DialogItem/DialogItem';
 import {MessageItem} from './Message/MessageItem';
-
-
+import {useRef} from 'react';
 
 
 export const Messages = (props) => {
@@ -14,17 +13,26 @@ export const Messages = (props) => {
   let messagesBlock = props.messagesData
       .map((el) => <MessageItem phrase={el.message}/>);
 
+  let newMessageElement = useRef(null);
 
+  const addMyMessage = () => {
+    let text = newMessageElement.current.value;
+    alert(text);
+  }
 
   return (
       <div className={classes.wrapper}>
-
         <div className={classes.dialogs}>
-          { dialogsBlock }
+          {dialogsBlock}
         </div>
-
-        <div className={classes.messages}>
-          { messagesBlock }
+        <div>
+          <div className={classes.messages}>
+            {messagesBlock}
+          </div>
+          <div className={classes.addMessageBlock}>
+            <textarea ref={newMessageElement} name="MyMessage" cols="60" rows="3"/>
+            <button onClick={addMyMessage}>Add Message</button>
+          </div>
         </div>
 
       </div>
