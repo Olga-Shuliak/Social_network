@@ -8,12 +8,13 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
-import {RootStateType} from './redux/state';
+import {RootStateType, updateNewPostText} from './redux/state';
 
 
 type AppPropsType = {
   state: RootStateType
   addNewPost: (newPost: string) => void
+  updateNewPostText: ()=> void
 }
 
 function App(props: AppPropsType) {
@@ -28,6 +29,8 @@ function App(props: AppPropsType) {
             <Route path="/profile"
                    element={<Profile
                        postsData={props.state.profilePage.postsData}
+                       newPostText={props.state.profilePage.newPostText}
+                       updateNewPostText={props.updateNewPostText}
                        addNewPost={props.addNewPost}/>}/>
             <Route path="/messages/*"
                    element={<Messages

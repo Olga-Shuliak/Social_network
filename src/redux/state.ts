@@ -7,7 +7,8 @@ let state = {
       {id: 2, message: 'win!!!', likeCount: 5},
       {id: 3, message: 'aloha', likeCount: 1},
       {id: 4, message: 'all serious', likeCount: 7}
-    ]
+    ],
+    newPostText: 'hello'
   },
   messagesPage: {
     dialogsData: [
@@ -33,16 +34,19 @@ let state = {
 export type RootStateType = typeof state
 
 
-
-export let addNewPost = (newPostMessage: string): void => {
-
+export let addNewPost = () => {
   let newPost = {
     id: 5,
-    message: newPostMessage,
+    message: state.profilePage.newPostText,
     likeCount: 0
   };
-
   state.profilePage.postsData.push(newPost);
+  state.profilePage.newPostText = '';
+  renderEntireTree(state);
+}
+
+export let updateNewPostText = (newText: string) => {
+  state.profilePage.newPostText = newText;
   renderEntireTree(state);
 }
 
