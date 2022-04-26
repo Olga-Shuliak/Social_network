@@ -1,12 +1,23 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {renderEntireTree} from './render';
-import state from './redux/state';
+import state, {addNewPost, RootStateType, subscribe, updateNewPostText} from './redux/state';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import App from './App';
 
-
+let renderEntireTree = (state:RootStateType) => {
+  ReactDOM.render(
+      <BrowserRouter>
+        <App state={state} addNewPost={addNewPost} updateNewPostText={updateNewPostText}/>
+      </BrowserRouter>,
+      document.getElementById('root')
+  );
+}
 
 renderEntireTree(state);
+
+subscribe(renderEntireTree);
 
 
 

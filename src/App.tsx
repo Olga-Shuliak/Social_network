@@ -14,7 +14,7 @@ import {RootStateType, updateNewPostText} from './redux/state';
 type AppPropsType = {
   state: RootStateType
   addNewPost: (newPost: string) => void
-  updateNewPostText: ()=> void
+  updateNewPostText: (newText: string)=> void
 }
 
 function App(props: AppPropsType) {

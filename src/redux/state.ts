@@ -1,4 +1,13 @@
-import {renderEntireTree} from '../render';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import App from '../App';
+import React from 'react';
+import {observe} from 'web-vitals/dist/modules/lib/observe';
+
+let renderEntireTree = (state:RootStateType) => {
+console.log('State changed')
+}
+
 
 let state = {
   profilePage: {
@@ -34,7 +43,7 @@ let state = {
 export type RootStateType = typeof state
 
 
-export let addNewPost = () => {
+export const addNewPost = () => {
   let newPost = {
     id: 5,
     message: state.profilePage.newPostText,
@@ -45,11 +54,14 @@ export let addNewPost = () => {
   renderEntireTree(state);
 }
 
-export let updateNewPostText = (newText: string) => {
+export const updateNewPostText = (newText: string) => {
   state.profilePage.newPostText = newText;
   renderEntireTree(state);
 }
 
+export const subscribe = (observer:any) => {
+  renderEntireTree = observer; // наблюдатель, патерн, publisher-subscriber
+}
 
 export default state;
 
