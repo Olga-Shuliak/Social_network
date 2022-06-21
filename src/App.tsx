@@ -13,8 +13,9 @@ import {Route, Routes} from 'react-router-dom';
 
 type AppPropsType = {
   state: any
-  addNewPost: (newPost: string) => void
-  updateNewPostText: (newText: string)=> void
+  //addNewPost: (newPost: string) => void
+  //updateNewPostText: (newText: string)=> void
+  dispatch: any
 }
 
 function App(props: AppPropsType) {
@@ -28,10 +29,14 @@ function App(props: AppPropsType) {
 
             <Route path="/profile"
                    element={<Profile
+                       // state={props.state} мое творение не работает
                        postsData={props.state.profilePage.postsData}
                        newPostText={props.state.profilePage.newPostText}
-                       updateNewPostText={props.updateNewPostText}
-                       addNewPost={props.addNewPost}/>}/>
+
+                       dispatch={props.dispatch}
+                       //updateNewPostText={props.updateNewPostText}
+                       //addNewPost={props.addNewPost}
+                   />}/>
             <Route path="/messages/*"
                    element={<Messages
                        dialogsData={props.state.messagesPage.dialogsData}
