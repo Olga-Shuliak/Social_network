@@ -71,7 +71,21 @@ let store = {
   }
 }
 
+export const addPostActionCreator = ()=> {
+  return {
+    type: 'ADD-POST' // можно вынести в переменную
+  }
+}
+// более короткая запись:
+//export const addPostActionCreator = ()=> ({type: 'ADD-POST'})
 
+
+export const updateNewPostTextActionCreator = (text:string)=> {
+  return {
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText: text
+  }
+}
 
 
 export default store;
