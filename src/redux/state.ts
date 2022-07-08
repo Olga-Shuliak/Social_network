@@ -1,3 +1,7 @@
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
+
+
 let store = {
   _state: {
     profilePage: {
@@ -25,7 +29,8 @@ let store = {
         {id: 4, message: 'Yo'},
         {id: 5, message: 'Yo'},
         {id: 6, message: 'Yo'}
-      ]
+      ],
+      newMessageBody: ''
     }
   },
   _callSubscriber(state:any) {
@@ -67,9 +72,19 @@ let store = {
     } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
       this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.messagesPage.newMessageBody = action.body;
+      this._callSubscriber(this._state);
+    }else if (action.type === SEND_MESSAGE) {
+      let body = this._state.messagesPage.newMessageBody;
+      this._state.messagesPage.newMessageBody = '';
+      this._state.messagesPage.messagesData.push({id: 7, message: body})
+      this._callSubscriber(this._state);
     }
   }
 }
+
+//-----------------Creators----------------------------------------------------------
 
 export const addPostActionCreator = ()=> {
   return {
@@ -78,14 +93,16 @@ export const addPostActionCreator = ()=> {
 }
 // более короткая запись:
 //export const addPostActionCreator = ()=> ({type: 'ADD-POST'})
-
-
 export const updateNewPostTextActionCreator = (text:string)=> {
   return {
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text
   }
 }
+
+export const sendMessageCreator = ()=> ({type: SEND_MESSAGE})
+export const updateNewMessageBodyCreator = (body:string)=>
+    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
 
 
 export default store;

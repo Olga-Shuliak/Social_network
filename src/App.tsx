@@ -16,6 +16,7 @@ type AppPropsType = {
   //addNewPost: (newPost: string) => void
   //updateNewPostText: (newText: string)=> void
   dispatch: any
+  store: any
 }
 
 function App(props: AppPropsType) {
@@ -36,11 +37,14 @@ function App(props: AppPropsType) {
                        dispatch={props.dispatch}
                        //updateNewPostText={props.updateNewPostText}
                        //addNewPost={props.addNewPost}
+
                    />}/>
             <Route path="/messages/*"
                    element={<Messages
                        dialogsData={props.state.messagesPage.dialogsData}
-                       messagesData={props.state.messagesPage.messagesData}/>}/>
+                       messagesData={props.state.messagesPage.messagesData}
+                       store={props.store}
+                   />}/>
             {/*<Route path="/messages/:id" element={<MessageItem/>}/>*/}
             <Route path="/news" element={<News/>}/>
             <Route path="/music" element={<Music/>}/>
