@@ -2,7 +2,7 @@ import {AppStoreType, DialogsType, MessageType} from '../../redux/types';
 import React, {useRef} from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import {MessageItem} from './Message/MessageItem';
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/state';
+import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/reducers/messagesReducer';
 import classes from './Messages.module.css';
 
 

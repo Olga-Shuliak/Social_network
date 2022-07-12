@@ -1,7 +1,9 @@
-import {AppStateType, AppStoreType} from './types';
+import {AllActions, AppStateType, AppStoreType} from './types';
+import profileReducer from './reducers/profileReducer';
+import messagesReducer from './reducers/messagesReducer';
 
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'SEND-MESSAGE'
+// const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+// const SEND_MESSAGE = 'SEND-MESSAGE'
 
 
 let store: AppStoreType = {
@@ -46,77 +48,38 @@ let store: AppStoreType = {
     this._callSubscriber = observer; // наблюдатель, патерн, publisher-subscriber
   },
 
-  // addNewPost() {
-  //   let newPost = {
-  //     id: 5,
-  //     message: this._state.profilePage.newPostText,
-  //     likeCount: 0
-  //   };
-  //   this._state.profilePage.postsData.push(newPost);
-  //   this._state.profilePage.newPostText = '';
-  //   this._callSubscriber(this._state);
-  // },
-  //updateNewPostText(newText: string) {
-  //   this._state.profilePage.newPostText = newText;
-  //   this._callSubscriber(this._state);
-  // },
 
-  dispatch(action: AllActions) {// {type: 'ADD-POST'}
-    if (action.type === 'ADD-POST') {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCount: 0
-      };
-      this._state.profilePage.postsData.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.messagesPage.newMessageBody = action.body;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let body = this._state.messagesPage.newMessageBody;
-      this._state.messagesPage.newMessageBody = '';
-      this._state.messagesPage.messagesData.push({id: 7, message: body})
-      this._callSubscriber(this._state);
-    }
+  dispatch(action: AllActions) {
+
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+
+    this._callSubscriber(this._state);
+
   }
 }
 
 //-----------------Creators----------------------------------------------------------
 
-export const addPostActionCreator = () => {
-  return {
-    type: 'ADD-POST' // можно вынести в переменную
-  } as const
-}
-// более короткая запись:
-//export const addPostActionCreator = ()=> ({type: 'ADD-POST'})
-export const updateNewPostTextActionCreator = (text: string) => {
-  return {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: text
-  } as const
-}
+// export const addPostActionCreator = () => {
+//   return {
+//     type: 'ADD-POST' // можно вынести в переменную
+//   } as const
+// }
+// // более короткая запись:
+// //export const addPostActionCreator = ()=> ({type: 'ADD-POST'})
+// export const updateNewPostTextActionCreator = (text: string) => {
+//   return {
+//     type: 'UPDATE-NEW-POST-TEXT',
+//     newText: text
+//   } as const
+// }
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE}) as const
-export const updateNewMessageBodyCreator = (body: string) =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, body: body}) as const
+// export const sendMessageCreator = () => ({type: 'SEND-MESSAGE'}) as const
+// export const updateNewMessageBodyCreator = (body: string) =>
+//     ({type: 'UPDATE-NEW-MESSAGE-BODY', body: body}) as const
 
-type updateNewMessageBodyCreatorType = { type: 'UPDATE-NEW-MESSAGE-BODY', body: string }
 
-type sendMessageCreatorType = ReturnType<typeof sendMessageCreator>
-type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostTextActionCreator>
-// type updateNewMessageBodyCreatorType = ReturnType<typeof updateNewMessageBodyCreator>
-type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
-
-export type AllActions = updateNewMessageBodyCreatorType
-    | sendMessageCreatorType
-    | updateNewPostTextActionCreatorType
-    | addPostActionCreatorType
 
 export default store;
 

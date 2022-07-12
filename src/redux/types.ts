@@ -1,4 +1,6 @@
-import {AllActions} from './state';
+import {sendMessageCreator, updateNewMessageBodyCreator} from './reducers/messagesReducer';
+import {addPostActionCreator, updateNewPostTextActionCreator} from './reducers/profileReducer';
+
 
 export type AppStoreType = {
   _state: AppStateType
@@ -39,3 +41,19 @@ export type DialogsType = {
   id: number
   name: string
 }
+
+
+
+
+//-----------------Creators----------------------------------------------------------
+
+
+export type sendMessageCreatorType = ReturnType<typeof sendMessageCreator>
+export type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostTextActionCreator>
+export type updateNewMessageBodyCreatorType = ReturnType<typeof updateNewMessageBodyCreator>
+export type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
+
+export type AllActions = updateNewMessageBodyCreatorType
+    | sendMessageCreatorType
+    | updateNewPostTextActionCreatorType
+    | addPostActionCreatorType
