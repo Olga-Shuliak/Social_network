@@ -3,20 +3,21 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Messages from './components/Messages/Messages';
+import {Messages} from './components/Messages/Messages';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
+import {AppStateType, AppStoreType} from './redux/types';
 
 
 
 type AppPropsType = {
-  state: any
+  state: AppStateType
   //addNewPost: (newPost: string) => void
   //updateNewPostText: (newText: string)=> void
-  dispatch: any
-  store: any
+  dispatch: AppStoreType['dispatch']
+  store: AppStoreType
 }
 
 function App(props: AppPropsType) {

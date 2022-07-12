@@ -1,21 +1,27 @@
-import classes from './Messages.module.css'
+import {AppStoreType, DialogsType, MessageType} from '../../redux/types';
+import React, {useRef} from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import {MessageItem} from './Message/MessageItem';
-import {useRef} from 'react';
 import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/state';
+import classes from './Messages.module.css';
 
 
-export const Messages = (props) => {
+export const Messages:React.FC< {
+  dialogsData: DialogsType[],
+  messagesData: MessageType[],
+  store: AppStoreType,
+}> = (props) => {
 
+  const tempState = props.store.getState()
 
   let dialogsBlock = props.dialogsData
-      .map((el) => <DialogItem name={el.name} id={el.id}/>);
+      .map((dialog) => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>);
 
   let messagesBlock = props.messagesData
-      .map((el) => <MessageItem phrase={el.message}/>);
+      .map((message) => <MessageItem key={message.id} phrase={message.message}/>);
 
   //---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!---------------------------
-  let newMessageBody = props.store._state.newMessageBody;
+  let newMessageBody = props.store._state.messagesPage.newMessageBody
 
 
 
@@ -54,4 +60,3 @@ export const Messages = (props) => {
   )
 }
 
-export default Messages;

@@ -1,8 +1,10 @@
+import {AppStateType, AppStoreType} from './types';
+
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 const SEND_MESSAGE = 'SEND-MESSAGE'
 
 
-let store = {
+let store: AppStoreType = {
   _state: {
     profilePage: {
       postsData: [
@@ -33,14 +35,14 @@ let store = {
       newMessageBody: ''
     }
   },
-  _callSubscriber(state:any) {
+  _callSubscriber(state: AppStateType) {
     console.log('State changed');
   },
 
   getState() {
     return this._state;
   },
-  subscribe(observer:any) {
+  subscribe(observer) {
     this._callSubscriber = observer; // наблюдатель, патерн, publisher-subscriber
   },
 
@@ -59,7 +61,7 @@ let store = {
   //   this._callSubscriber(this._state);
   // },
 
-  dispatch(action:any){// {type: 'ADD-POST'}
+  dispatch(action: AllActions) {// {type: 'ADD-POST'}
     if (action.type === 'ADD-POST') {
       let newPost = {
         id: 5,
@@ -75,7 +77,7 @@ let store = {
     } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
       this._state.messagesPage.newMessageBody = action.body;
       this._callSubscriber(this._state);
-    }else if (action.type === SEND_MESSAGE) {
+    } else if (action.type === SEND_MESSAGE) {
       let body = this._state.messagesPage.newMessageBody;
       this._state.messagesPage.newMessageBody = '';
       this._state.messagesPage.messagesData.push({id: 7, message: body})
@@ -86,24 +88,35 @@ let store = {
 
 //-----------------Creators----------------------------------------------------------
 
-export const addPostActionCreator = ()=> {
+export const addPostActionCreator = () => {
   return {
     type: 'ADD-POST' // можно вынести в переменную
-  }
+  } as const
 }
 // более короткая запись:
 //export const addPostActionCreator = ()=> ({type: 'ADD-POST'})
-export const updateNewPostTextActionCreator = (text:string)=> {
+export const updateNewPostTextActionCreator = (text: string) => {
   return {
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text
-  }
+  } as const
 }
 
-export const sendMessageCreator = ()=> ({type: SEND_MESSAGE})
-export const updateNewMessageBodyCreator = (body:string)=>
-    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
+export const sendMessageCreator = () => ({type: SEND_MESSAGE}) as const
+export const updateNewMessageBodyCreator = (body: string) =>
+    ({type: UPDATE_NEW_MESSAGE_BODY, body: body}) as const
 
+type updateNewMessageBodyCreatorType = { type: 'UPDATE-NEW-MESSAGE-BODY', body: string }
+
+type sendMessageCreatorType = ReturnType<typeof sendMessageCreator>
+type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostTextActionCreator>
+// type updateNewMessageBodyCreatorType = ReturnType<typeof updateNewMessageBodyCreator>
+type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
+
+export type AllActions = updateNewMessageBodyCreatorType
+    | sendMessageCreatorType
+    | updateNewPostTextActionCreatorType
+    | addPostActionCreatorType
 
 export default store;
 
