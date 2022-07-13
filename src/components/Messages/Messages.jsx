@@ -7,21 +7,20 @@ import classes from './Messages.module.css';
 
 
 export const Messages:React.FC< {
-  dialogsData: DialogsType[],
-  messagesData: MessageType[],
+  // dialogsData: DialogsType[],
+  // messagesData: MessageType[],
   store: AppStoreType,
 }> = (props) => {
 
   const tempState = props.store.getState()
 
-  let dialogsBlock = props.dialogsData
+  let dialogsBlock = tempState.messagesPage.dialogsData
       .map((dialog) => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>);
 
-  let messagesBlock = props.messagesData
+  let messagesBlock = tempState.messagesPage.messagesData
       .map((message) => <MessageItem key={message.id} phrase={message.message}/>);
 
-  //---------------------------------------!!!!!!!!!!!!!!!!!!!!!!!!!---------------------------
-  let newMessageBody = props.store._state.messagesPage.newMessageBody
+  let newMessageBody = tempState.messagesPage.newMessageBody
 
 
 

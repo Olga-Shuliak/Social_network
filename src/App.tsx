@@ -14,8 +14,6 @@ import {AppStateType, AppStoreType} from './redux/types';
 
 type AppPropsType = {
   state: AppStateType
-  //addNewPost: (newPost: string) => void
-  //updateNewPostText: (newText: string)=> void
   dispatch: AppStoreType['dispatch']
   store: AppStoreType
 }
@@ -31,19 +29,14 @@ function App(props: AppPropsType) {
 
             <Route path="/profile"
                    element={<Profile
-                       // state={props.state} мое творение не работает
                        postsData={props.state.profilePage.postsData}
                        newPostText={props.state.profilePage.newPostText}
-
                        dispatch={props.dispatch}
-                       //updateNewPostText={props.updateNewPostText}
-                       //addNewPost={props.addNewPost}
-
                    />}/>
             <Route path="/messages/*"
                    element={<Messages
-                       dialogsData={props.state.messagesPage.dialogsData}
-                       messagesData={props.state.messagesPage.messagesData}
+                       // dialogsData={props.state.messagesPage.dialogsData}
+                       // messagesData={props.state.messagesPage.messagesData}
                        store={props.store}
                    />}/>
             {/*<Route path="/messages/:id" element={<MessageItem/>}/>*/}

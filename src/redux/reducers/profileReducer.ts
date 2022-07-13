@@ -4,24 +4,18 @@ import {AllActions, ProfilePageType} from '../types';
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
+let initialState = {
+  postsData: [
+    {id: 1, message: 'feel good', likeCount: 10},
+    {id: 2, message: 'win!!!', likeCount: 5},
+    {id: 3, message: 'aloha', likeCount: 1},
+    {id: 4, message: 'all serious', likeCount: 7}
+  ],
+  newPostText: 'hello'
+}
 
+const profileReducer = (state: ProfilePageType = initialState , action: AllActions) => {
 
-const profileReducer = (state: ProfilePageType, action: AllActions) => {
-//приходит кусочек стейта (профиль), а не весь
-//   if (action.type === ADD_POST) {
-//     let newPost = {
-//       id: 5,
-//       message: state.newPostText,
-//       likeCount: 0
-//     };
-//     state.postsData.push(newPost);
-//     state.newPostText = '';
-//
-//   } else if (action.type === UPDATE_NEW_POST_TEXT) {
-//     state.newPostText = action.newText;
-//
-//   }
-//   return state;
   switch (action.type) {
     case ADD_POST:
       let newPost = {
