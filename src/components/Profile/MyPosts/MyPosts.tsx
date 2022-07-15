@@ -1,14 +1,10 @@
-//import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 import {useRef} from 'react';
-import {PostType} from '../../../redux/types';
 
 
+const MyPosts = (props: any) => {
 
-
-const MyPosts = (props) => {
-
-  let postsBlock = props.postsData.map(el => <Post message={el.message} likeCounter={el.likeCount}/>);
+  let postsBlock = props.postsData.map((el:any) => <Post message={el.message} likeCounter={el.likeCount}/>);
 
   let newPostElement = useRef(null);
 
@@ -17,6 +13,7 @@ const MyPosts = (props) => {
   }
 
   const onPostChange = () => {
+    // @ts-ignore
     let text = newPostElement.current.value;
     props.updateNewPostText(text);
   }
@@ -31,7 +28,8 @@ const MyPosts = (props) => {
                     onChange={onPostChange}
                     value={props.newPostText}
                     name="MyPost"
-                    cols="90" rows="2"/>
+                    cols={90}
+                    rows={2}/>
         </div>
         <div>
           <button onClick={addNewPost}>Add post</button>
