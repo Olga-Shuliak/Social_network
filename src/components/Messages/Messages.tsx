@@ -1,37 +1,34 @@
-import {AppStoreType, DialogsType, MessageType} from '../../redux/types';
-import React, {useRef} from 'react';
+import React, {ChangeEvent, useRef} from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import {MessageItem} from './Message/MessageItem';
-import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/reducers/messagesReducer';
 import classes from './Messages.module.css';
+import {MessagePageType} from '../../redux/types';
+
+type PropsType = {
+  messagesPage: MessagePageType
+  updateNewMessageBody: (body: string) => void
+  sendMessage: () => void
+}
+export const Messages = (props: PropsType) => {
 
 
-export const Messages:React.FC< {
-  // dialogsData: DialogsType[],
-  // messagesData: MessageType[],
-  store: AppStoreType,
-}> = (props) => {
-
-  const tempState = props.store.getState()
-
-  let dialogsBlock = tempState.messagesPage.dialogsData
+  let dialogsBlock = props.messagesPage.dialogsData
       .map((dialog) => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>);
 
-  let messagesBlock = tempState.messagesPage.messagesData
+  let messagesBlock = props.messagesPage.messagesData
       .map((message) => <MessageItem key={message.id} phrase={message.message}/>);
 
-  let newMessageBody = tempState.messagesPage.newMessageBody
-
+  let newMessageBody = props.messagesPage.newMessageBody
 
 
   let newMessageElement = useRef(null);
 
   const onSendMessageClick = () => {
-    props.store.dispatch(sendMessageCreator());
+    props.sendMessage();
   }
-  const onNewMessageChange =(e)=> {
+  const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     let body = e.target.value;
-    props.store.dispatch(updateNewMessageBodyCreator(body));
+    props.updateNewMessageBody(body);
   }
 
   return (
@@ -48,7 +45,7 @@ export const Messages:React.FC< {
             <textarea placeholder="Add your message"
                       value={newMessageBody}
                       onChange={onNewMessageChange}
-                      ref={newMessageElement} name="MyMessage" cols="60" rows="3"/>
+                      ref={newMessageElement} name="MyMessage"/>
             <button onClick={onSendMessageClick}>SEND</button>
           </div>
 

@@ -1,8 +1,7 @@
-import classes from './MyPosts.module.css';
+//import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 import {useRef} from 'react';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/reducers/profileReducer';
-
+import {PostType} from '../../../redux/types';
 
 
 
@@ -14,22 +13,18 @@ const MyPosts = (props) => {
   let newPostElement = useRef(null);
 
   let addNewPost = () => {
-    //props.addPost();
-    //props.dispatch({type: 'ADD-POST'});
-    props.dispatch(addPostActionCreator());
+    props.addPost();
   }
 
   const onPostChange = () => {
     let text = newPostElement.current.value;
-    //props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
-    //let action = { type: 'UPDATE-NEW-POST-TEXT', newText: text};
-    let action = updateNewPostTextActionCreator(text);
-    props.dispatch(action);
-
+    props.updateNewPostText(text);
   }
 
   return (
-      <div className={classes.myPost}>
+      <div
+          //className={classes.myPost}
+      >
         <h3>My post</h3>
         <div>
           <textarea ref={newPostElement}
@@ -41,7 +36,9 @@ const MyPosts = (props) => {
         <div>
           <button onClick={addNewPost}>Add post</button>
         </div>
-        <div className={classes.posts}>
+        <div
+            //className={classes.posts}
+        >
           {postsBlock}
         </div>
       </div>

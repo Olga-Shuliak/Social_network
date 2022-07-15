@@ -10,9 +10,10 @@ import {AppStateType} from './redux/types';
 let renderEntireTree = (state: AppStateType) => {
   ReactDOM.render(
       <BrowserRouter>
-        <App state={state}
-             dispatch={store.dispatch.bind(store)}
-             store={store}
+        <App
+            state={store.getState()}
+            dispatch={store.dispatch}
+            store={store}
         />
       </BrowserRouter>,
       document.getElementById('root')
@@ -21,12 +22,10 @@ let renderEntireTree = (state: AppStateType) => {
 
 renderEntireTree(store.getState());
 
-store.subscribe(()=> {
+store.subscribe(() => {
   let state = store.getState()
   renderEntireTree(state);
 });
-
-
 
 
 // If you want to start measuring performance in your app, pass a function

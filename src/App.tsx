@@ -9,13 +9,15 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
 import {AppStateType, AppStoreType} from './redux/types';
+import {RootStateType, RootStoreType} from './redux/redux-store';
+import {MessagesConteiner} from './components/Messages/MessagesConteiner';
 
 
 
 type AppPropsType = {
-  state: AppStateType
+  state: RootStateType
   dispatch: AppStoreType['dispatch']
-  store: AppStoreType
+  store: RootStoreType
 }
 
 function App(props: AppPropsType) {
@@ -29,12 +31,13 @@ function App(props: AppPropsType) {
 
             <Route path="/profile"
                    element={<Profile
-                       postsData={props.state.profilePage.postsData}
-                       newPostText={props.state.profilePage.newPostText}
-                       dispatch={props.dispatch}
+                       // postsData={props.store._state.profilePage.postsData}
+                       // newPostText={props.store._state.profilePage.newPostText}
+                       // dispatch={props.dispatch}
+                       store={props.store}
                    />}/>
             <Route path="/messages/*"
-                   element={<Messages
+                   element={<MessagesConteiner
                        // dialogsData={props.state.messagesPage.dialogsData}
                        // messagesData={props.state.messagesPage.messagesData}
                        store={props.store}
