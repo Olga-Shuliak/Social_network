@@ -24,17 +24,17 @@ let initialState = {
   newMessageBody: ''
 }
 
-const messagesReducer = (state:MessagePageType = initialState, action: AllActions) => {
+const messagesReducer = (state: MessagePageType = initialState, action: AllActions): MessagePageType => {
 
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_BODY:
-      state.newMessageBody = action.body;
-      return state;
+      // state.newMessageBody = action.body;
+      return {...state, newMessageBody:action.body};
     case SEND_MESSAGE:
       let body = state.newMessageBody;
       state.newMessageBody = '';
       state.messagesData.push({id: 7, message: body});
-      return state;
+      return {...state};
     default:
       return state;
   }

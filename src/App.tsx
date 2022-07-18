@@ -10,17 +10,18 @@ import Settings from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
 import {AppStateType, AppStoreType} from './redux/types';
 import {RootStateType, RootStoreType} from './redux/redux-store';
-import {MessagesConteiner} from './components/Messages/MessagesConteiner';
+import {MessagesContainer} from './components/Messages/MessagesContainer';
+import {MessageItem} from './components/Messages/Message/MessageItem';
 
 
 
-type AppPropsType = {
-  state: RootStateType
-  dispatch: AppStoreType['dispatch']
-  store: RootStoreType
-}
+// type AppPropsType = {
+//   state: RootStateType
+//   dispatch: AppStoreType['dispatch']
+//   store: RootStoreType
+// }
 
-function App(props: AppPropsType) {
+function App() {
   return (
       <div className="app-wrapper">
         <Header/>
@@ -34,15 +35,17 @@ function App(props: AppPropsType) {
                        // postsData={props.store._state.profilePage.postsData}
                        // newPostText={props.store._state.profilePage.newPostText}
                        // dispatch={props.dispatch}
-                       store={props.store}
+                       //store={props.store}
                    />}/>
+
             <Route path="/messages/*"
-                   element={<MessagesConteiner
+                   element={<MessagesContainer
                        // dialogsData={props.state.messagesPage.dialogsData}
                        // messagesData={props.state.messagesPage.messagesData}
-                       store={props.store}
+                       //store={props.store}
                    />}/>
-            {/*<Route path="/messages/:id" element={<MessageItem/>}/>*/}
+
+            <Route path="/messages/:id" element={<MessageItem/>}/>
             <Route path="/news" element={<News/>}/>
             <Route path="/music" element={<Music/>}/>
             <Route path="/settings" element={<Settings/>}/>

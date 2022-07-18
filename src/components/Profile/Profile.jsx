@@ -4,18 +4,20 @@ import MyPostsContainer from './MyPosts/Post/MyPostsContainer';
 import {AppStoreType, PostType} from '../../redux/types';
 import {RootStoreType} from '../../redux/redux-store';
 
-type PropsType = {
-  // postsData: PostType[]
-  // newPostText: string
-  // dispatch: AppStoreType['dispatch']
-  store:RootStoreType
-}
-const Profile = (props: PropsType) => {
+// type PropsType = {
+//   // postsData: PostType[]
+//   // newPostText: string
+//   // dispatch: AppStoreType['dispatch']
+//   store:RootStoreType
+// }
+const Profile = () => {
 
   return (
       <div className={classes.wrapper}>
         <ProfileInfo/>
-        <MyPostsContainer store={props.store}/>
+        <MyPostsContainer
+            //store={props.store}
+        />
       </div>
   )
 }

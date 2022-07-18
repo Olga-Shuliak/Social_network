@@ -5,16 +5,15 @@ import store from './redux/redux-store';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App';
-import {AppStateType} from './redux/types';
+import {AppStateType, AppStoreType} from './redux/types';
+import  Provider from './StoreContext';
 
-let renderEntireTree = (state: AppStateType) => {
+let renderEntireTree = (state:AppStateType) => {
   ReactDOM.render(
       <BrowserRouter>
-        <App
-            state={store.getState()}
-            dispatch={store.dispatch}
-            store={store}
-        />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>,
       document.getElementById('root')
   );
