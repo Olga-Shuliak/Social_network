@@ -4,12 +4,12 @@ import {MessageItem} from './Message/MessageItem';
 import classes from './Messages.module.css';
 import {MessagePageType} from '../../redux/types';
 
-type PropsType = {
+type MessagesPropsType = {
   messagesPage: MessagePageType
   updateNewMessageBody: (body: string) => void
   sendMessage: () => void
 }
-export const Messages = (props: PropsType) => {
+export const Messages = (props: MessagesPropsType) => {
 
 
   let dialogsBlock = props.messagesPage.dialogsData

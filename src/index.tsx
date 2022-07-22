@@ -5,8 +5,9 @@ import store from './redux/redux-store';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App';
-import {AppStateType, AppStoreType} from './redux/types';
-import  Provider from './StoreContext';
+import {AppStateType} from './redux/types';
+import {Provider} from 'react-redux';
+
 
 let renderEntireTree = (state:AppStateType) => {
   ReactDOM.render(

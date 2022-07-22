@@ -3,23 +3,15 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import {Messages} from './components/Messages/Messages';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
-import {AppStateType, AppStoreType} from './redux/types';
-import {RootStateType, RootStoreType} from './redux/redux-store';
-import {MessagesContainer} from './components/Messages/MessagesContainer';
+
 import {MessageItem} from './components/Messages/Message/MessageItem';
+import {MessagesContainer} from './components/Messages/MessagesContainer';
 
 
-
-// type AppPropsType = {
-//   state: RootStateType
-//   dispatch: AppStoreType['dispatch']
-//   store: RootStoreType
-// }
 
 function App() {
   return (

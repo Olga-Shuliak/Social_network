@@ -1,37 +1,30 @@
 import React from 'react';
 import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/reducers/messagesReducer';
-import {RootStoreType} from '../../redux/redux-store';
 import {Messages} from './Messages';
-import {StoreContext} from '../../StoreContext';
+import {connect} from 'react-redux';
+import {RootStateType} from '../../redux/redux-store';
+import {Dispatch} from 'redux';
+import {MessagePageType} from '../../redux/types';
 
 
-export const MessagesContainer = () => {
-
-  return (
-
-      <StoreContext.Consumer>
-        {
-        (store: RootStoreType) => {
-
-          let tempState = store.getState().messagesPage
-
-
-          const onSendMessageClick = () => {
-            store.dispatch(sendMessageCreator());
-          }
-          const onNewMessageChange = (body: string) => {
-            store.dispatch(updateNewMessageBodyCreator(body));
-          }
-          return (
-              <Messages
-                  updateNewMessageBody={onNewMessageChange}
-                  sendMessage={onSendMessageClick}
-                  messagesPage={tempState}
-              />)
-        }
-      }
-
-      </StoreContext.Consumer>
-  )
+const mapStateToProps = (state: RootStateType): { messagesPage: MessagePageType } => {
+  return {
+    messagesPage: state.messagesPage
+  }
+}
+const mapDispatchToProps = (dispatch:Dispatch):{
+  sendMessage: () => void,
+  updateNewMessageBody: (body: string) => void
+} =>
+{
+  return {
+    updateNewMessageBody: (body: string) => {
+      dispatch(updateNewMessageBodyCreator(body));
+    },
+    sendMessage: () => {
+      dispatch(sendMessageCreator());
+    }
+  }
 }
 
+export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
