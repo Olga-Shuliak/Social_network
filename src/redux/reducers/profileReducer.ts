@@ -17,18 +17,25 @@ let initialState = {
 const profileReducer = (state: ProfilePageType = initialState , action: AllActions):ProfilePageType => {
 
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST:{
       let newPost = {
         id: 5,
         message: state.newPostText,
         likeCount: 0
       };
-      state.postsData.push(newPost);
+
+      let stateCopy = {...state}; // копия ссылки на этот объект
+      stateCopy.postsData = [...state.postsData]; // и этот массив тоже делаем копию
+
+      stateCopy.postsData.push(newPost); // добавляем все что надо
       state.newPostText = '';
-      return state;
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newPostText;
-      return state;
+      return stateCopy; // !!ВОЗВРАЩАЕМ КОПИЮ!!
+  }
+    case UPDATE_NEW_POST_TEXT:{
+      let stateCopy = {...state};
+      stateCopy.newPostText = action.newPostText;
+      return stateCopy;
+    }
     default:
       return state;
   }
