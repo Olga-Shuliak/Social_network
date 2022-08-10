@@ -10,10 +10,13 @@ import {Route, Routes} from 'react-router-dom';
 
 import {MessageItem} from './components/Messages/Message/MessageItem';
 import {MessagesContainer} from './components/Messages/MessagesContainer';
+import {Users} from './components/Users/Users';
 
 
 
 function App() {
+
+
   return (
       <div className="app-wrapper">
         <Header/>
@@ -38,6 +41,9 @@ function App() {
                    />}/>
 
             <Route path="/messages/:id" element={<MessageItem/>}/>
+
+            <Route path="/users" element={<Users/>}/>
+
             <Route path="/news" element={<News/>}/>
             <Route path="/music" element={<Music/>}/>
             <Route path="/settings" element={<Settings/>}/>

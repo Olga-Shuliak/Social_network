@@ -1,5 +1,6 @@
 import {sendMessageCreator, updateNewMessageBodyCreator} from './reducers/messagesReducer';
 import {addPostActionCreator, updateNewPostTextActionCreator} from './reducers/profileReducer';
+import {followAC, setUsersAC, unfollowAC} from './reducers/usersReducer';
 
 
 export type AppStoreType = {
@@ -13,8 +14,9 @@ export type AppStoreType = {
 export type AppStateType = {
   profilePage: ProfilePageType
   messagesPage: MessagePageType
+  usersPage: UsersPageType
 }
-
+//-----------------------------------------------
 export type ProfilePageType = {
   postsData: PostType[]
   newPostText: string
@@ -25,7 +27,7 @@ export type PostType = {
   message: string
   likeCount: number
 }
-
+//----------------------------------------------
 export type MessagePageType = {
   dialogsData: DialogsType[]
   messagesData: MessageType[]
@@ -41,8 +43,22 @@ export type DialogsType = {
   id: number
   name: string
 }
+//--------------------------------------
+export type UsersPageType = {
+  usersData: UsersDataType[]
+}
 
-
+export type UsersDataType = {
+  id: number
+  followed: boolean
+  fullName: string
+  status: string
+  location: LocationType
+}
+export type LocationType = {
+  city: string
+  country: string
+}
 
 
 //-----------------Creators----------------------------------------------------------
@@ -53,7 +69,15 @@ export type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPost
 export type updateNewMessageBodyCreatorType = ReturnType<typeof updateNewMessageBodyCreator>
 export type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
 
+export type followACType = ReturnType<typeof followAC>
+export type unfollowACType = ReturnType<typeof unfollowAC>
+export type setUsersACType = ReturnType<typeof setUsersAC>
+
 export type AllActions = updateNewMessageBodyCreatorType
     | sendMessageCreatorType
     | updateNewPostTextActionCreatorType
     | addPostActionCreatorType
+
+    | followACType
+    | unfollowACType
+    | setUsersACType
