@@ -1,17 +1,19 @@
-import {UsersDataType, UsersPageType} from '../../redux/types';
+import {UsersPageType, UserType} from '../../redux/types';
 import {RootStateType} from '../../redux/redux-store';
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {Messages} from '../Messages/Messages';
 import {followAC, setUsersAC, unfollowAC} from '../../redux/reducers/usersReducer';
+import {Users} from './Users';
 
 
-const mapStateToProps = (state: RootStateType): { usersPage: UsersPageType } => {
+
+const mapStateToProps = (state: RootStateType): { users: UserType[] } => {
   return {
-    usersPage: state.usersPage
+    users: state.usersPage.users
   }
 }
-const mapDispatchToProps = (dispatch: Dispatch): {} => {
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     follow: (userID: number) => {
       dispatch(followAC(userID))
@@ -19,10 +21,10 @@ const mapDispatchToProps = (dispatch: Dispatch): {} => {
     unfollow: (userID: number) => {
       dispatch(unfollowAC(userID))
     },
-    setUsers: (users: UsersDataType[]) => {
+    setUsers: (users: UserType[]) => {
       dispatch(setUsersAC(users))
     }
   }
 }
 
-export const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)

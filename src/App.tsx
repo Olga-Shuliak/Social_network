@@ -10,7 +10,8 @@ import {Route, Routes} from 'react-router-dom';
 
 import {MessageItem} from './components/Messages/Message/MessageItem';
 import {MessagesContainer} from './components/Messages/MessagesContainer';
-import {Users} from './components/Users/Users';
+import {UsersContainer} from './components/Users/UsersContainer';
+
 
 
 
@@ -26,23 +27,14 @@ function App() {
           <Routes>
 
             <Route path="/profile"
-                   element={<Profile
-                       // postsData={props.store._state.profilePage.postsData}
-                       // newPostText={props.store._state.profilePage.newPostText}
-                       // dispatch={props.dispatch}
-                       //store={props.store}
-                   />}/>
+                   element={<Profile />}/>
 
             <Route path="/messages/*"
-                   element={<MessagesContainer
-                       // dialogsData={props.state.messagesPage.dialogsData}
-                       // messagesData={props.state.messagesPage.messagesData}
-                       //store={props.store}
-                   />}/>
+                   element={<MessagesContainer />}/>
 
             <Route path="/messages/:id" element={<MessageItem/>}/>
 
-            <Route path="/users" element={<Users/>}/>
+            <Route path="/users" element={<UsersContainer />}/>
 
             <Route path="/news" element={<News/>}/>
             <Route path="/music" element={<Music/>}/>

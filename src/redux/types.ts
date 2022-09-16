@@ -45,11 +45,12 @@ export type DialogsType = {
 }
 //--------------------------------------
 export type UsersPageType = {
-  usersData: UsersDataType[]
+  users: UserType[]
 }
 
-export type UsersDataType = {
+export type UserType = {
   id: number
+  photoUrl: string
   followed: boolean
   fullName: string
   status: string
