@@ -50,16 +50,21 @@ export type UsersPageType = {
 
 export type UserType = {
   id: number
-  photoUrl: string
+  name: string
+  uniquerUrlName: string
+  photos: PhotosType
   followed: boolean
-  fullName: string
   status: string
-  location: LocationType
+  // location: LocationType
 }
-export type LocationType = {
-  city: string
-  country: string
+export type PhotosType = {
+  small: string
+  large: string
 }
+// export type LocationType = {
+//   city: string
+//   country: string
+// }
 
 
 //-----------------Creators----------------------------------------------------------
