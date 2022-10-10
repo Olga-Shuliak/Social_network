@@ -1,6 +1,6 @@
 import {sendMessageCreator, updateNewMessageBodyCreator} from './reducers/messagesReducer';
 import {addPostActionCreator, updateNewPostTextActionCreator} from './reducers/profileReducer';
-import {followAC, setUsersAC, unfollowAC} from './reducers/usersReducer';
+import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from './reducers/usersReducer';
 
 
 export type AppStoreType = {
@@ -46,6 +46,9 @@ export type DialogsType = {
 //--------------------------------------
 export type UsersPageType = {
   users: UserType[]
+  pageSize: number
+  totalUsersCount: number
+  currentPage: number
 }
 
 export type UserType = {
@@ -78,6 +81,8 @@ export type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
 export type followACType = ReturnType<typeof followAC>
 export type unfollowACType = ReturnType<typeof unfollowAC>
 export type setUsersACType = ReturnType<typeof setUsersAC>
+export type setCurrentPageACType = ReturnType<typeof setCurrentPageAC>
+export type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
 
 export type AllActions = updateNewMessageBodyCreatorType
     | sendMessageCreatorType
@@ -87,3 +92,5 @@ export type AllActions = updateNewMessageBodyCreatorType
     | followACType
     | unfollowACType
     | setUsersACType
+    | setCurrentPageACType
+    | setTotalUsersCountACType

@@ -1,4 +1,12 @@
+.usersWrapper {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+}
 .userPhoto {
     width: 100px;
     height: 100px;
+}
+.selectedPage {
+    font-weight: bold;
 }

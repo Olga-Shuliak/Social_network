@@ -1,19 +1,19 @@
 .nav {
     grid-area: n;
-    background-color: burlywood;
+    background-color: ghostwhite;
 }
 .item {
     margin-top: 20px;
     padding-left: 20px;
 }
 .item:hover > a {
-    color: darkseagreen;
+    color: darkgoldenrod;
 }
 a {
     color: dimgray;
     text-decoration: none;
 }
 .active {
-    color: seagreen;
+    color: goldenrod;
 }
 
