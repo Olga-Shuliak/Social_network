@@ -24,7 +24,7 @@ export const Users =(props: UsersProps)=> {
 
     return (
         <div>
-          <div className={classes.usersWrapper}>
+          <div className={classes.pagination}>
             {pages.map(p => {
               return (
               <span

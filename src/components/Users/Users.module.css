@@ -1,7 +1,26 @@
 .usersWrapper {
     max-width: 1200px;
+    max-height: 60px;
     display: flex;
     flex-wrap: wrap;
+}
+.pagination {
+    max-height: 110px;
+    display: inline-block;
+    background-color: white;
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+.pagination::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.pagination span {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
 }
 .userPhoto {
     width: 100px;
@@ -9,4 +28,13 @@
 }
 .selectedPage {
     font-weight: bold;
+}
+
+.preloader {
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    left: 55%;
+    bottom: 50%;
 }
