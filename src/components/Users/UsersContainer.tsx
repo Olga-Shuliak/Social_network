@@ -1,6 +1,6 @@
 import {UserType} from '../../redux/types';
 import {RootStateType} from '../../redux/redux-store';
-import {Dispatch} from 'redux';
+
 import {connect} from 'react-redux';
 import {
   follow,
@@ -16,6 +16,8 @@ import {Users} from './Users';
 
 import {Preloader} from '../common/Preloader/Preloader';
 
+
+
 type UsersAPI = {
   users: UserType[]
   pageSize: number
@@ -29,6 +31,8 @@ type UsersAPI = {
   isFetching: boolean
   setIsFetching: (isFetching: boolean)=> void
 }
+
+
 
 //классовая компонента для API запросов
 class UsersAPIContainer extends React.Component<UsersAPI, any> {
@@ -88,28 +92,6 @@ const mapStateToProps = (state: RootStateType)
   }
 }
 
-// const mapDispatchToProps = (dispatch: Dispatch) => {
-//   return {
-//     follow: (userID: number) => {
-//       dispatch(followAC(userID))
-//     },
-//     unfollow: (userID: number) => {
-//       dispatch(unfollowAC(userID))
-//     },
-//     setUsers: (users: UserType[]) => {
-//       dispatch(setUsersAC(users))
-//     },
-//     setCurrentPage: (pageNumber: number) => {
-//       dispatch(setCurrentPageAC(pageNumber))
-//     },
-//     setTotalUsersCount: (totalUsersCount: number) => {
-//       dispatch(setTotalUsersCountAC(totalUsersCount))
-//     },
-//     setIsFetching: (isFetching: boolean) => {
-//       dispatch(setIsFetchingAC(isFetching))
-//     }
-//   }
-// }
 
 export const UsersContainer = connect(mapStateToProps,
     // mapDispatchToProps

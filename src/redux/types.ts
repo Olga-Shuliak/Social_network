@@ -1,5 +1,8 @@
 import {sendMessageCreator, updateNewMessageBodyCreator} from './reducers/messagesReducer';
-import {addPostActionCreator, updateNewPostTextActionCreator} from './reducers/profileReducer';
+import {
+  addPost, setUserProfile,
+  updateNewPostText
+} from './reducers/profileReducer';
 import {
   follow,
   setCurrentPage,
@@ -10,13 +13,13 @@ import {
 } from './reducers/usersReducer';
 
 
-export type AppStoreType = {
-  _state: AppStateType
-  _callSubscriber: (state: AppStateType) => void
-  getState: () => AppStateType
-  subscribe: (observer: (state: AppStateType) => void) => void
-  dispatch: (action: AllActions) => void
-}
+// export type AppStoreType = {
+//   _state: AppStateType
+//   _callSubscriber: (state: AppStateType) => void
+//   getState: () => AppStateType
+//   subscribe: (observer: (state: AppStateType) => void) => void
+//   dispatch: (action: AllActions) => void
+// }
 
 export type AppStateType = {
   profilePage: ProfilePageType
@@ -27,7 +30,37 @@ export type AppStateType = {
 export type ProfilePageType = {
   postsData: PostType[]
   newPostText: string
+  profile: {} | null
 }
+
+export type ProfileType = {
+  id: number
+  message: string
+  likeCount: number
+
+}
+//  ________________________!!!!!_______________
+export type ProfileApiType ={
+  aboutMe: string
+  contacts: ContactsType
+  lookingForAJob: boolean
+  lookingForAJobDescription: string
+  fullName: string
+  userId: number
+  photos: PhotosType
+}
+
+export type ContactsType = {
+  facebook: string
+  website: string
+  vk: string
+  twitter: string
+  instagram: string
+  youtube: string
+  github: string
+  mainLink: string
+}
+
 
 export type PostType = {
   id: number
@@ -82,9 +115,10 @@ export type PhotosType = {
 
 
 export type sendMessageCreatorType = ReturnType<typeof sendMessageCreator>
-export type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostTextActionCreator>
+export type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPostText>
 export type updateNewMessageBodyCreatorType = ReturnType<typeof updateNewMessageBodyCreator>
-export type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
+export type addPostActionCreatorType = ReturnType<typeof addPost>
+export type setUserProfileACType = ReturnType<typeof setUserProfile>
 
 export type followACType = ReturnType<typeof follow>
 export type unfollowACType = ReturnType<typeof unfollow>
@@ -97,6 +131,7 @@ export type AllActions = updateNewMessageBodyCreatorType
     | sendMessageCreatorType
     | updateNewPostTextActionCreatorType
     | addPostActionCreatorType
+    | setUserProfileACType
 
     | followACType
     | unfollowACType

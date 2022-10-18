@@ -1,7 +1,16 @@
 import classes from './ProfileInfo.module.css';
+import {ProfileApiType} from '../../../redux/types';
+import {Preloader} from '../../common/Preloader/Preloader';
 
+type ProfileInfoPropsType = {
+  profile: ProfileApiType
+}
+const ProfileInfo = (props: ProfileInfoPropsType) => {
 
-const ProfileInfo = () => {
+  if (!props.profile) {
+    return <Preloader/>
+  }
+
   return (
       <div>
         <div><img className={classes.cover}
@@ -10,7 +19,7 @@ const ProfileInfo = () => {
         </div>
         <div className={classes.profile}>
           <img className={classes.avatar}
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPGqX4s6HDBoVTLwIhy3fFmdxvMiDIfUtdA&usqp=CAU"
+               src={props.profile.photos.large}
                alt="avatar"/>
           <div className={classes.description}>description</div>
         </div>
