@@ -1,12 +1,12 @@
 import {sendMessageCreator, updateNewMessageBodyCreator} from './reducers/messagesReducer';
 import {addPostActionCreator, updateNewPostTextActionCreator} from './reducers/profileReducer';
 import {
-  followAC,
-  setCurrentPageAC,
-  setIsFetchingAC,
-  setTotalUsersCountAC,
-  setUsersAC,
-  unfollowAC
+  follow,
+  setCurrentPage,
+  setIsFetching,
+  setTotalUsersCount,
+  setUsers,
+  unfollow
 } from './reducers/usersReducer';
 
 
@@ -86,12 +86,12 @@ export type updateNewPostTextActionCreatorType = ReturnType<typeof updateNewPost
 export type updateNewMessageBodyCreatorType = ReturnType<typeof updateNewMessageBodyCreator>
 export type addPostActionCreatorType = ReturnType<typeof addPostActionCreator>
 
-export type followACType = ReturnType<typeof followAC>
-export type unfollowACType = ReturnType<typeof unfollowAC>
-export type setUsersACType = ReturnType<typeof setUsersAC>
-export type setCurrentPageACType = ReturnType<typeof setCurrentPageAC>
-export type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
-export type setIsFetchingACType = ReturnType<typeof setIsFetchingAC>
+export type followACType = ReturnType<typeof follow>
+export type unfollowACType = ReturnType<typeof unfollow>
+export type setUsersACType = ReturnType<typeof setUsers>
+export type setCurrentPageACType = ReturnType<typeof setCurrentPage>
+export type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCount>
+export type setIsFetchingACType = ReturnType<typeof setIsFetching>
 
 export type AllActions = updateNewMessageBodyCreatorType
     | sendMessageCreatorType
