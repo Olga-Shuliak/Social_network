@@ -27,7 +27,7 @@ function App() {
         <div className="app-wrapper-content">
           <Routes>
 
-            <Route path="/profile/:id"
+            <Route path="/profile/:userId"
                    element={<ProfileContainer  />}/>
 
             <Route path="/messages/*"
