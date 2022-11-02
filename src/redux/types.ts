@@ -1,16 +1,7 @@
 import {sendMessageCreator, updateNewMessageBodyCreator} from './reducers/messagesReducer';
-import {
-  addPost, setUserProfile,
-  updateNewPostText
-} from './reducers/profileReducer';
-import {
-  follow,
-  setCurrentPage,
-  setIsFetching,
-  setTotalUsersCount,
-  setUsers,
-  unfollow
-} from './reducers/usersReducer';
+import {addPost, setUserProfile, updateNewPostText} from './reducers/profileReducer';
+import {follow, setCurrentPage, setIsFetching, setTotalUsersCount, setUsers, unfollow} from './reducers/usersReducer';
+import {setAuthUserData} from './reducers/authReducer';
 
 
 // export type AppStoreType = {
@@ -40,7 +31,7 @@ export type ProfileType = {
 
 }
 //  ________________________!!!!!_______________
-export type ProfileApiType ={
+export type ProfileApiType = {
   aboutMe: string
   contacts: ContactsType
   lookingForAJob: boolean
@@ -110,6 +101,13 @@ export type PhotosType = {
 //   country: string
 // }
 
+//_______________Auth____________
+export type AuthObjectType = {
+  userId: number|null
+  email: string|null
+  login: string|null
+  isAuth: boolean
+}
 
 //-----------------Creators----------------------------------------------------------
 
@@ -127,6 +125,8 @@ export type setCurrentPageACType = ReturnType<typeof setCurrentPage>
 export type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCount>
 export type setIsFetchingACType = ReturnType<typeof setIsFetching>
 
+export type setUserDataACType = ReturnType<typeof setAuthUserData>
+
 export type AllActions = updateNewMessageBodyCreatorType
     | sendMessageCreatorType
     | updateNewPostTextActionCreatorType
@@ -139,3 +139,5 @@ export type AllActions = updateNewMessageBodyCreatorType
     | setCurrentPageACType
     | setTotalUsersCountACType
     | setIsFetchingACType
+
+    | setUserDataACType
